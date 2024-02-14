@@ -16,9 +16,38 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ApportRepository extends ServiceEntityRepository
 {
+    public $conn;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Apport::class);
+        $this->conn = $this->getEntityManager()->getConnection();
+    }
+
+    public function blockBoxes($userId, $budget = '>')
+    {
+
+        $sql = "SELECT p.id, user_id, SUM(value) AS value, data_aport, p.created_at, SUM(ap.budget) AS budget
+        FROM apport p
+        LEFT JOIN applications ap ON p.id = ap.apport_id
+        WHERE ap.budget $budget 0
+        ";
+
+        $query = $this->conn->executeQuery($sql);
+        return $query->fetchAssociative();
+    }
+
+    public function blockSaldo($userId)
+    {
+
+        $sql = "SELECT p.id, user_id, value, data_aport, p.created_at
+        FROM apport p
+
+        WHERE MONTH(created_at) = 3
+        ";
+
+        $query = $this->conn->executeQuery($sql);
+        return $query->fetchAssociative();
     }
 
 //    /**
