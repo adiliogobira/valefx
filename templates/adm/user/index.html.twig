@@ -1,0 +1,80 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Editar dados de usuário{% endblock %}
+
+{% block body %}
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dados do usuario</h1>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <form action="{{ path('app_adm_dashboard_user_edit_update', {userId:user.id}) }}" method="post">
+                    <!-- Basic Card Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Informações de acesso</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-2">
+
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="name" placeholder="Nome"
+                                           value="{{ user.name }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="lastname" placeholder="sobreome"
+                                           value="{{ user.lastname }}">
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-2">
+
+                                <div class="col-md-12">
+                                    <input type="text" class="form-control" name="email" placeholder="E-mail"
+                                           value="{{ user.email }}">
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-2">
+
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control" name="password" placeholder="Senha">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control" name="repeatpassword"
+                                           placeholder="Repita a senha">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success text-end float-end"><i class="fa fa-save"></i> Salvar
+                                alterações
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-6">
+
+                <!-- Dropdown Card Example -->
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Inicio!{% endblock %}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset("assets/img/favicons/apple-touch-icon.png") }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset("assets/img/favicons/favicon-32x32.png") }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset("assets/img/favicons/favicon-16x16.png") }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset("assets/img/favicons/favicon.png") }}">
+    <link rel="manifest" href="{{ asset("assets/img/favicons/manifest.json") }}">
+    <meta name="msapplication-TileImage" content="{{ asset("assets/img/favicons/mstile-150x150.png") }}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;display=swap"
+          rel="stylesheet">
+    <link href="{{ asset("vendors/prism/prism.css") }}" rel="stylesheet">
+    <link href="{{ asset("vendors/swiper/swiper-bundle.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("assets/css/theme.css") }}" rel="stylesheet"/>
+    <link href="{{ asset("assets/css/user.css") }}" rel="stylesheet"/>
+
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+
+<script src="{{ asset("vendors/popper/popper.min.js") }}"></script>
+<script src="{{ asset("vendors/bootstrap/bootstrap.min.js") }}"></script>
+<script src="{{ asset("vendors/anchorjs/anchor.min.js") }}"></script>
+<script src="{{ asset("vendors/is/is.min.js") }}"></script>
+<script src="{{ asset("vendors/fontawesome/all.min.js") }}"></script>
+<script src="{{ asset("vendors/lodash/lodash.min.js") }}"></script>
+<script src="{{ asset("https://polyfill.io/v3/polyfill.min.js?features=window.scroll") }}"></script>
+<script src="{{ asset("vendors/prism/prism.js") }}"></script>
+<script src="{{ asset("vendors/swiper/swiper-bundle.min.js") }}"></script>
+<script src="{{ asset("assets/js/theme.js") }}"></script>
+{% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+{% endblock %}
+</body>
+</html>
