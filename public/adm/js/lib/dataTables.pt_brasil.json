@@ -1,0 +1,23 @@
+{
+	"sEmptyTable": "Nenhum contribuinte encontrado",
+	"sInfo": "&raquo; Mostrando _START_ à _END_ - <b>Total de Contribuintes: _TOTAL_</b>",
+	"sInfoEmpty": "&raquo; Não há nenhum contribuinte",
+	"sInfoFiltered": "(Filtrados dos <b>_MAX_ contribuintes existentes</b>)",
+	"sInfoPostFix": "",
+	"sInfoThousands": ".",
+	"sLengthMenu": "_MENU_ Resultados por página",
+	"sProcessing": "<button class='btn btn-secondary' type='button' disabled><span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Processando... </button>",
+	"sLoadingRecords": "",
+	"sZeroRecords": "Nenhum contribuinte encontrado",
+	"sSearch": "<i class ='fas fa-search fa-1x' title='Pesquisar'></i>",
+	"oPaginate": {
+		"sNext": "Próximo",
+		"sPrevious": "Anterior",
+		"sFirst": "Primeiro",
+		"sLast": "Último"
+	},
+	"oAria": {
+		"sSortAscending": ": Ordenar colunas de forma ascendente",
+		"sSortDescending": ": Ordenar colunas de forma descendente"
+	}
+}

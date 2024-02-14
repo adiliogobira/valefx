@@ -108,10 +108,36 @@
                 }
             };
             let configsDatatables = {
+                'language': {
+
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "&raquo; Mostrando _START_ à _END_ - <b>Total de registros: _TOTAL_</b>",
+                    "sInfoEmpty": "&raquo; Não há nenhum registro",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ Resultados por página",
+                    "sProcessing": "<button class='btn btn-secondary' type='button' disabled><span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Processando... </button>",
+                    "sLoadingRecords": "<button class='btn btn-secondary mt-5' type='button' disabled><span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Carregando... </button>",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "<i class ='fas fa-search fa-1x' title='Pesquisar'></i>",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+
+                },
                 'columnDefs': [
                     {
                         'targets': [2, 3, 4],
                         'createdCell': function (nTd, sData, oData, iRow, iCol) {
+                            let v;
                             if (iCol === 2 || iCol === 3) {
                                 if (sData !== '-') {
                                     v = moeda(sData);
@@ -126,7 +152,7 @@
                                 }
                             }
                             if (iCol === 4) {
-                                $(nTd).text(sData+'%');
+                                $(nTd).text(sData + '%');
 
                                 if (sData < 0) {
                                     $(nTd).css('color', 'red')
@@ -137,8 +163,6 @@
                 ]
             };
             $('#dataTable').DataTable(configsDatatables);
-            let valores = $('.number')
-            $('.number').replace()
         });
     </script>
 {% endblock %}

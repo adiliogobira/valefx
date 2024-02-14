@@ -1,0 +1,93 @@
+.uploadifyQueueItem {
+	background-color: #F5F5F5;
+	border: 2px solid #E5E5E5;
+	font: 11px Verdana, Geneva, sans-serif;
+	margin-top: 5px;
+	padding: 10px;
+	width: 350px;
+}
+.uploadifyError {
+	background-color: #FDE5DD !important;
+	border: 2px solid #FBCBBC !important;
+}
+.uploadifyQueueItem .cancel {
+	float: right;
+}
+.uploadifyQueue .completed {
+	background-color: #E5E5E5;
+}
+#sidebar {
+	margin: 0px;
+	width: 500px ;
+	float:left;
+
+}
+
+#allfiles {
+	float:right;
+	margin:20px;
+	width:420px;
+	}
+
+#loader {
+	display:none;
+	padding:0 0 0 20px;
+	}
+
+#allfiles ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-left:1px solid #eee;
+}
+
+#allfiles ul li {padding:8px 5px;border-top:1px solid #eee;}
+
+.odd {background:#f9f9f9;}
+
+.uploadifyQueue {
+	margin-top:5px;
+}
+.uploadifyQueueItem {
+	font-size: 11px;
+	color:#333;
+	padding:5px 5px;
+	width:300px;
+	background:#E9E9D1;
+	border:1px solid #C0C0C0;
+	}
+.uploadifyError {
+	margin:0px;
+	color: #cc0000 !important;
+}
+.uploadifyError .uploadifyProgressBar {
+	margin:0px;
+	background-color: #cc0000 !important;
+}
+#sidebar .cancel {float:right;}
+#sidebar .cancel a:link,
+#sidebar .cancel a:visited,
+#sidebar .cancel a:hover {
+	padding:0 !important;
+	margin:0 4px 0 0 !important;
+	width:11px !important;
+	background: transaparent !important;
+}
+.uploadifyProgress {
+	margin:0px;
+	background-color: #FFF;
+	margin-top: 8px;
+	width: 97%;
+}
+.uploadifyProgressBar {
+	margin:0px;
+	background-color: #A3C7D8;
+	width: 1px;
+	height: 5px;
+}
+#queue{
+	float:right;
+	margin-left:10px;
+	}
