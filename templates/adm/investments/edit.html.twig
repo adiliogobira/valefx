@@ -11,7 +11,10 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Cadastrar nova aplicação</h1>
+            <h1 class="h3 mb-0 text-gray-800">Editar investimento</h1>
+            <a href="{{ path('app_adm_investment_lista') }}" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-reply fa-fw mr-2 text-gray-400"></i> Voltar a lista
+            </a>
         </div>
 
 
@@ -28,17 +31,18 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <input type="text" class="form-control" name="budget" placeholder="Lucro/perda">
+                                            <input type="text" class="form-control" name="value"
+                                                   placeholder="Valor do investimento" value="{{ investiment.value }}">
                                         </div>
                                     </div>
-                                    <hr>
                                     <div class="form-group">
                                         <div class="form-row">
                                             <label for="userId">Selecione o Cliente</label>
                                             <select name="userId" id="userId" class="form-select-sm form-control">
                                                 <option value="">Selecione um cliente</option>
                                                 {% for user in users %}
-                                                    <option value="{{ user.id }}">{{ user.name }}
+                                                    <option {% if user.id == investiment.userId %} selected {% endif %}
+                                                            value="{{ user.id }}">{{ user.name }}
                                                         {{ user.lastname }}</option>
                                                 {% endfor %}
                                             </select>
@@ -56,40 +60,24 @@
 
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <multi-input class="border-0 w-100">
-                                                <input name="data_aport" list="actives"
-                                                       placeholder="Selecione os ativos"
-                                                       class="form-control">
-                                                <datalist id="actives">
-                                                    {% for ativo in ativos %}
-                                                        <option value="{{ ativo.active_abreviate }}"></option>
-                                                    {% endfor %}
-                                                </datalist>
-                                            </multi-input>
+                                            <input name="data_aport"
+                                                   data-role="tagsinput" placeholder="Selecione os ativos"
+                                                   class="form-control">
                                         </div>
-                                        <hr>
                                     </div>
-                                    <hr>
                                     <div class="form-group">
                                         <div class="form-row">
-                                            <select name="month" class="form-control">
-                                                <option>Selecione o mês de aporte</option>
-                                                <option value="1">Janeiro</option>
-                                                <option value="2">Fevereiro</option>
-                                                <option value="3">Março</option>
-                                                <option value="4">Abril</option>
-                                                <option value="5">Maio</option>
-                                                <option value="6">Junho</option>
-                                                <option value="7">Julho</option>
-                                                <option value="8">Agosto</option>
-                                                <option value="9">Setembro</option>
-                                                <option value="10">Outubro</option>
-                                                <option value="11">Novembro</option>
-                                                <option value="12">Dezembro</option>
+                                            <label for="status">Status</label>
+                                            <select name="status" id="status" class="form-control">
+                                                <option value="Inativo">Inativo</option>
+                                                <option value="Ativo">Ativo</option>
+                                                <option value="Suspenso">Suspenso</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <hr>
+
+                                </div>
+                                <div class="card-footer">
                                     <div class="form-group">
                                         <div class="form-row">
                                             <button class="btn btn-success btn-block">
@@ -116,32 +104,24 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('assets/js/multi-input.js') }}"></script>
-    <script src="{{ asset('assets/js/script.js') }}"></script>
     <script>
         $(function () {
-            $(function(){
+            $(".data_aport").tagsinput('add', { "value": 1 , "text": "jQuery"});
+
+            $(function () {
                 $('form').on('submit', function () {
-                    let data_aport = $('input[name=data_aport]')
-                    let ativo = '';
-                    let item = $('.item').each(function(i, n){
-                        console.log($(n).html())
-                        ativo += $(n).html()+',';
-                    });
-                    ativo = ativo.substring(0,ativo.length -1)
-                    data_aport.val(ativo)
+
                     $.ajax({
-                        data:$(this).serialize(),
-                        url:$(this).attr('action'),
-                        type:'post',
-                        dataType:'json',
-                        success:function(result){
+                        data: $(this).serialize(),
+                        url: $(this).attr('action'),
+                        type: 'post',
+                        dataType: 'json',
+                        success: function (result) {
                             console.log(
                                 result
                             )
                         }
                     });
-                    data_aport.val('')
                     return false;
                 });
             });

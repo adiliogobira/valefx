@@ -7,6 +7,7 @@ use App\Entity\Applications;
 use App\Entity\Users;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,10 +18,12 @@ class ApplicationsController extends AbstractController
     public function index(EntityManagerInterface $em, Request $request): Response
     {
         $users = $em->getRepository(Users::class)->findBy(['accessLevel' => '2']);
+        $ativos = $em->getRepository(Applications::class)->listaAtivos();
 
         return $this->render('adm/applications/index.html.twig', [
             'users' => $users,
             'user' => (new Auth())->getUserData($request, $em),
+            'ativos' => $ativos,
             'controller_name' => 'ApplicationsController',
         ]);
     }
@@ -37,5 +40,12 @@ class ApplicationsController extends AbstractController
             'user' => (new Auth())->getUserData($request, $em),
             'controller_name' => 'ApplicationsController',
         ]);
+    }
+
+    #[Route('/adm/sys/application/nova-aplicacao', name: 'app_adm_applications_lista_nova')]
+    public function newApplication(EntityManagerInterface $em, Request $request): JsonResponse
+    {
+        return new JsonResponse($_POST);
+
     }
 }

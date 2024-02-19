@@ -63,6 +63,16 @@ class ApplicationsRepository extends ServiceEntityRepository
         return $query->fetchAllAssociative();
     }
 
+    public function listaAtivos()
+    {
+
+        $sql = "SELECT active_name, active_abreviate, active_status
+        FROM actives";
+
+        $query = $this->conn->executeQuery($sql);
+        return $query->fetchAllAssociative();
+    }
+
 //    /**
 //     * @return Applications[] Returns an array of Applications objects
 //     */
