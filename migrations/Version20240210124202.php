@@ -106,7 +106,7 @@ final class Version20240210124202 extends AbstractMigration
         email VARCHAR(255) NOT NULL,
         password VARCHAR(255) NOT NULL,
         recover VARCHAR(255) DEFAULT NULL,
-        access_level ENUM("Cliente", "Administrador", "Superadmin") NOT NULL DEFAULT 'Cliente', 
+        access_level ENUM("Cliente", "Administrador", "Superadmin") NOT NULL DEFAULT "Cliente", 
         status ENUM("Inativo", "Ativo", "Suspenso") NOT NULL DEFAULT "Inativo",
         created_at VARCHAR(255) NOT NULL,
         updated_at VARCHAR(255) NOT NULL,
