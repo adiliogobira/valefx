@@ -34,7 +34,7 @@ class UsersRepository extends ServiceEntityRepository
         $sql = "SELECT id, name, lastname, email, access_level, status
         FROM users
         WHERE email = '{$email}'";
-        dd($user);
+        
         $query = $this->conn()->query($sql);
         return $query->fetch();
     }
