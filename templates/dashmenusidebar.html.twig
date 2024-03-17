@@ -4,7 +4,8 @@
     <a class="sidebar-brand d-flex align-items-center justify-content-center"
        href="{{ path('app_adm_dashboard_home') }}">
         <div class="sidebar-brand-icon mx-3">
-            <img src="{{ asset('assets/img/logo.png') }}" height="70" alt="">
+            {# <img src="{{ asset('assets/img/logo.png') }}" height="70" alt=""> #}
+            VALE FX
         </div>
     </a>
 
@@ -20,7 +21,7 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider">
-
+{% if user.accessLevel == 2 %}
     <!-- Heading -->
     <div class="sidebar-heading">
         Cliente
@@ -28,7 +29,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ path('app_client_applications_lista') }}">
             <i class="fas fa-fw fa-chart-bar"></i>
             <span>Relatórios</span>
         </a>
@@ -36,6 +37,8 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+    {% endif %}
+    {% if user.accessLevel > 2 %}
     <!-- Heading -->
     <div class="sidebar-heading">
         Gestor
@@ -57,11 +60,25 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#clientes"
+           aria-expanded="true" aria-controls="clientes">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Clientes</span>
+        </a>
+        <div id="clientes" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ path('app_adm_user') }}">Listar Clientes</a>
+                <a class="collapse-item" href="{{ path('app_adm_applications') }}">Novo Cliente</a>
+            </div>
+        </div>
+    </li>
 
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-
+    
+    {% endif %}
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

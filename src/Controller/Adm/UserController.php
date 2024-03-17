@@ -13,10 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/adm/user', name: 'app_adm_user')]
-    public function index(Request $request): Response
+    public function index(EntityManagerInterface $em, Request $request): Response
     {
-        return $this->render('adm/user/index.html.twig', [
+        $clientes = $em->getRepository(Users::class)->listClients();
+        
+        return $this->render('adm/user/list.html.twig', [
             'controller_name' => 'UserController',
+            'user' => (new Auth())->getUserData($request, $em),
+            'clientes' => $clientes,
         ]);
     }
 
@@ -26,14 +30,14 @@ class UserController extends AbstractController
         //dd($request->getSession());
         return $this->render('adm/user/index.html.twig', [
             'controller_name' => 'AdmDashboardController',
-            'user' => (new Auth())->getUserData($request, $em),
+            'user' => (new Auth())->getUserData($request, $em, $request->get('userId')),
         ]);
     }
 
     #[Route('/adm/sys/user/edit/{userId}/update', name: 'app_adm_dashboard_user_edit_update')]
     public function updateUser(EntityManagerInterface $em, Request $request): Response
     {
-        $user = $em->getRepository(Users::class)->find($request->getSession()->get('authUser'));
+        $user = $em->getRepository(Users::class)->find($request->get('userId'));
         $update = false;
         if ($user->getName() != $request->get('name')) {
             $user->setName($request->get('name'));
@@ -60,6 +64,6 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
         }
-        return $this->redirectToRoute('app_adm_dashboard_user_edit', ['userId' => $request->getSession()->get('authUser')]);
+        return $this->redirectToRoute('app_adm_dashboard_user_edit', ['userId' => $request->get('userId')]);
     }
 }

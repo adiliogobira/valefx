@@ -8,11 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ModeloController extends AbstractController
 {
-    #[Route('/modelo', name: 'app_modelo')]
-    public function index(): Response
+    protected $data;
+
+    public function __construct()
     {
-        return $this->render('modelo/index.html.twig', [
-            'controller_name' => 'ModeloController',
-        ]);
+
     }
+
+    
 }

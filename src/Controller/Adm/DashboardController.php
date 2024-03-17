@@ -14,12 +14,15 @@ class DashboardController extends AbstractController
     #[Route('/adm/sys/home', name: 'app_adm_dashboard_home')]
     public function home(EntityManagerInterface $em, Request $request): Response
     {
-        //dd($request->getSession());
+        if (!$request->getSession()->get('authUser')) {
+            return $this->redirectToRoute('app_adm_dashboard_login');
+        }
+
         $boxes = $em->getRepository(\App\Entity\Apport::class);
         $ganhos = $boxes->blockBoxes($request->getSession()->get('authUser'), '>');
         $perdas = $boxes->blockBoxes($request->getSession()->get('authUser'), '<');
         $saldo = $boxes->blockSaldo($request->getSession()->get('authUser'));
-        //dd($saldo);
+
         return $this->render('adm/dashboard/index.html.twig', [
             'controller_name' => 'AdmDashboardController',
             'user' => (new Auth())->getUserData($request, $em),

@@ -25,9 +25,9 @@ class Auth
         return $this->attempt($request->get('email'), $request->get('password'));
     }
 
-    public function getUserData($request, $em)
+    public function getUserData($request, $em, $userId = null)
     {
-        return $em->getRepository(\App\Entity\Users::class)->find($request->getSession()->get('authUser'));
+        return $em->getRepository(\App\Entity\Users::class)->find($userId??$request->getSession()->get('authUser'));
     }
 
     private function isEmail(string $email): bool
@@ -67,7 +67,7 @@ class Auth
             return null;
         }
 
-//        dd($this->passwd_rehash($password));
+        //        dd($this->passwd_rehash($password));
         if ($this->passwdRehash($password)) {
             $user->setPassword($this->passwd($password));
             $this->em->persist($user);

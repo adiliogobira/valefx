@@ -23,6 +23,7 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
 						<div class="dropdown-header">Application Settings:</div>
+						<a class="dropdown-item" href="{{ path('app_client_application_grafico') }}">Ver graficos</a>
 						<a class="dropdown-item" href="{{ path('app_adm_applications') }}">Adicionar Nova Aplicação</a>
 						<a class="dropdown-item" href="{{ path('app_adm_investment_create') }}">Adicionar Novo Investimento</a>
 					</div>
@@ -39,7 +40,6 @@
 								<th>Investimento</th>
 								<th>Ganho/Perda</th>
 								<th>Ganho / Perda %</th>
-								<th>Ação</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -50,14 +50,6 @@
 									<td>{{ list.value }}</td>
 									<td>{{ list.budget|raw }}</td>
 									<td class="text-center">{{ list.percentual }}</td>
-									<td class="text-center">
-										<a href="#" class="btn btn-sm btn-outline-primary">
-											<i class="fa fa-chart-bar"></i>
-										</a>
-										<a href="#" class="btn btn-sm btn-outline-secondary">
-											<i class="fa fa-download"></i>
-										</a>
-									</td>
 								</tr>
 							{% endfor %}
 						</tbody>

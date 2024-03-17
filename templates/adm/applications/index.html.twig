@@ -5,157 +5,203 @@
 
 {% block body %}
 
-    <!-- Begin Page Content -->
-    <div
-            class="container-fluid">
+	<!-- Begin Page Content -->
+	<div
+		class="container-fluid">
 
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Cadastrar nova aplicação</h1>
-        </div>
-
-
-        <div class="row">
-
-            <div class="col-lg-12">
-                <form action="{{ path('app_adm_applications_lista_nova') }}" method="post">
-                    <div class="row">
-                        <div class="col-md-8 ps-0 ms-0">
-                            <div class="card shadow mb-4 ms-0">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Informações das aplicações</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <input type="text" class="form-control" name="budget" placeholder="Lucro/perda">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <label for="userId">Selecione o Cliente</label>
-                                            <select name="userId" id="userId" class="form-select-sm form-control">
-                                                <option value="">Selecione um cliente</option>
-                                                {% for user in users %}
-                                                    <option value="{{ user.id }}">{{ user.name }}
-                                                        {{ user.lastname }}</option>
-                                                {% endfor %}
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card shadow mb-4 ms-0">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Dados adicionais</h6>
-                                </div>
-                                <div class="card-body">
-
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <multi-input class="border-0 w-100">
-                                                <input name="data_aport" list="actives"
-                                                       placeholder="Selecione os ativos"
-                                                       class="form-control">
-                                                <datalist id="actives">
-                                                    {% for ativo in ativos %}
-                                                        <option value="{{ ativo.active_abreviate }}"></option>
-                                                    {% endfor %}
-                                                </datalist>
-                                            </multi-input>
-                                        </div>
-                                        <hr>
-                                    </div>
-                                    <hr>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <select name="month" class="form-control">
-                                                <option>Selecione o mês de aporte</option>
-                                                <option value="1">Janeiro</option>
-                                                <option value="2">Fevereiro</option>
-                                                <option value="3">Março</option>
-                                                <option value="4">Abril</option>
-                                                <option value="5">Maio</option>
-                                                <option value="6">Junho</option>
-                                                <option value="7">Julho</option>
-                                                <option value="8">Agosto</option>
-                                                <option value="9">Setembro</option>
-                                                <option value="10">Outubro</option>
-                                                <option value="11">Novembro</option>
-                                                <option value="12">Dezembro</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="form-group">
-                                        <div class="form-row">
-                                            <button class="btn btn-success btn-block">
-                                                <i class="fa fa-save"></i>
-                                                Salvar
-                                                alterações
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Cadastrar nova aplicação</h1>
+		</div>
 
 
-        </div>
+		<div class="row">
 
-    </div>
-    <!-- /.container-fluid -->
+			<div class="col-lg-12">
+				<form action="{{ path('app_adm_applications_lista_nova') }}" method="post">
+					<div class="row">
+						<div class="col-md-8 ps-0 ms-0">
+							<div class="card shadow mb-4 ms-0">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">Informações das aplicações</h6>
+								</div>
+								<div class="card-body">
+									<div class="form-group">
+										<div class="form-row">
+											<input type="text" class="form-control" name="budget" placeholder="Lucro/perda">
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="form-row">
+											<label for="userId">Selecione o Cliente</label>
+											<select name="userId" id="userId" class="form-select-sm form-control">
+												<option value="">Selecione um cliente</option>
+												{% for user in users %}
+													<option value="{{ user.id }}">{{ user.name }}
+														{{ user.lastname }}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card shadow mb-4 ms-0">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">Dados adicionais</h6>
+								</div>
+								<div class="card-body">
+
+									<div class="form-group">
+										<div class="form-row">
+											<multi-input class="border-0 w-100">
+												<input name="data_aport" list="actives" placeholder="Selecione os ativos" class="form-control">
+												<datalist id="actives">
+													{% for ativo in ativos %}
+														<option value="{{ ativo.active_abreviate }}"></option>
+													{% endfor %}
+												</datalist>
+											</multi-input>
+										</div>
+										<hr>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="form-row">
+											<select name="month" class="form-control">
+												<option>Selecione o mês de aporte</option>
+												<option value="1">Janeiro</option>
+												<option value="2">Fevereiro</option>
+												<option value="3">Março</option>
+												<option value="4">Abril</option>
+												<option value="5">Maio</option>
+												<option value="6">Junho</option>
+												<option value="7">Julho</option>
+												<option value="8">Agosto</option>
+												<option value="9">Setembro</option>
+												<option value="10">Outubro</option>
+												<option value="11">Novembro</option>
+												<option value="12">Dezembro</option>
+											</select>
+										</div>
+									</div>
+									<hr>
+									<div class="form-group">
+										<div class="form-row">
+											<button class="btn btn-success btn-block">
+												<i class="fa fa-save"></i>
+												Salvar
+												                                                alterações
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+
+		</div>
+
+	</div>
+	<!-- /.container-fluid -->
 
 
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('assets/js/multi-input.js') }}"></script>
-    <script src="{{ asset('assets/js/script.js') }}"></script>
-    <script>
-        $(function () {
-            $(function(){
-                $('form').on('submit', function () {
-                    let data_aport = $('input[name=data_aport]')
-                    let ativo = '';
-                    let item = $('.item').each(function(i, n){
-                        console.log($(n).html())
-                        ativo += $(n).html()+',';
-                    });
-                    ativo = ativo.substring(0,ativo.length -1)
-                    data_aport.val(ativo)
-                    $.ajax({
-                        data:$(this).serialize(),
-                        url:$(this).attr('action'),
-                        type:'post',
-                        dataType:'json',
-                        success:function(result){
-                            console.log(
-                                result
-                            )
-                        }
-                    });
-                    data_aport.val('')
-                    return false;
-                });
-            });
-            $('.datepicker').datepicker({
-                days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
-                daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
-                daysMin: ["Do", "Se", "Te", "Qua", "Qui", "Se", "Sa"],
-                months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
-                monthsShort: ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],
-                today: "Hoje",
-                monthsTitle: "Meses",
-                clear: "Limpar",
-                format: "dd/mm/yyyy"
-            });
-        });
-    </script>
+	<script src="{{ asset('assets/js/multi-input.js') }}"></script>
+	<script src="{{ asset('assets/js/script.js') }}"></script>
+	<script>
+		$(function () {
+$(function () {
+$('form').on('submit', function () {
+let data_aport = $('input[name=data_aport]')
+let ativo = '';
+let item = $('.item').each(function (i, n) {
+console.log($(n).html())
+ativo += $(n).html() + ',';
+});
+ativo = ativo.substring(0, ativo.length - 1)
+data_aport.val(ativo)
+$.ajax({
+data: $(this).serialize(),
+url: $(this).attr('action'),
+type: 'post',
+dataType: 'json',
+success: function (result) {
+console.log(result)
+}
+});
+data_aport.val('')
+return false;
+});
+});
+$('.datepicker').datepicker({
+days: [
+"Domingo",
+"Segunda",
+"Terça",
+"Quarta",
+"Quinta",
+"Sexta",
+"Sábado"
+],
+daysShort: [
+"Dom",
+"Seg",
+"Ter",
+"Qua",
+"Qui",
+"Sex",
+"Sáb"
+],
+daysMin: [
+"Do",
+"Se",
+"Te",
+"Qua",
+"Qui",
+"Se",
+"Sa"
+],
+months: [
+"Janeiro",
+"Fevereiro",
+"Março",
+"Abril",
+"Maio",
+"Junho",
+"Julho",
+"Agosto",
+"Setembro",
+"Outubro",
+"Novembro",
+"Dezembro"
+],
+monthsShort: [
+"Jan",
+"Fev",
+"Mar",
+"Abr",
+"Mai",
+"Jun",
+"Jul",
+"Ago",
+"Set",
+"Out",
+"Nov",
+"Dez"
+],
+today: "Hoje",
+monthsTitle: "Meses",
+clear: "Limpar",
+format: "dd/mm/yyyy"
+});
+});
+	</script>
 {% endblock %}

@@ -23,6 +23,10 @@ class AdmDashboardController extends AbstractController
     #[Route('/adm/sys/login', name: 'app_adm_dashboard_login')]
     public function login(Request $request): Response
     {
+        if ($request->getSession()->get('authUser')) {
+            return $this->redirectToRoute('app_adm_dashboard_home');
+        }
+
         return $this->render('adm_dashboard/login.html.twig', [
             'controller_name' => 'AdmDashboardController',
             'user' => false,
@@ -76,22 +80,18 @@ class AdmDashboardController extends AbstractController
         }
         if (!$request->get('lastname')) {
             echo "É necessário informar o sobrenome para o cadastro";
-
         }
         if (!$request->get('email')) {
             echo "É necessário informar o e-mail para o cadastro";
-
         }
         if (!$request->get('password')) {
             echo "É necessário informar a senha para o cadastro";
         }
         if (!$request->get('repeatPassword')) {
             echo "É necessário informar novamente a senha para o cadastro";
-
         }
         if ($request->get('repeatPassword') != $request->get('repeatPassword')) {
             echo " As senhas não conferem";
-
         }
         if ($request->get('password') < Auth::CONF_PASSWD_MIN_LEN && $request->get('password') > Auth::CONF_PASSWD_MAX_LEN) {
 
